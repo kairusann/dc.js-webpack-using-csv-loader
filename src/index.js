@@ -1,11 +1,9 @@
-//import {scaleLinear} from 'd3-scale';
-//import crossfilter from 'crossfilter2';
-//import dc from 'dc';
+import {scaleLinear} from 'd3-scale';
+import {schemeSet1} from 'd3';
+import crossfilter from 'crossfilter2';
+import dc from 'dc';
 import './dc.min.css';
 import Data from './data.csv';
-var d3 = require("d3");
-var crossfilter = require('crossfilter2')
-var dc = require('dc')
 
 function component() {
   var element = document.createElement('div');
@@ -18,7 +16,7 @@ function component() {
 
 document.body.appendChild(component());
 
-dc.config.defaultColors(d3.schemeSet1)
+dc.config.defaultColors(schemeSet1);
 
 var chart = dc.barChart('#test')
 
@@ -39,7 +37,7 @@ var chart = dc.barChart('#test')
   chart
     .width(768)
     .height(480)
-    .x(d3.scaleLinear().domain([6,20]))
+    .x(scaleLinear().domain([6,20]))
     .brushOn(false)
     .yAxisLabel("This is the Y Axis!")
     .dimension(runDimension)
